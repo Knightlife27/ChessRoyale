@@ -1,0 +1,28 @@
+services:
+  flask:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: chessroyale-flask
+    restart: always
+    expose:
+      - "5000"
+    networks:
+      - app-network
+
+  nginx:
+    build:
+      context: .
+      dockerfile: nginx/Dockerfile
+    container_name: chessroyale-nginx
+    restart: always
+    ports:
+      - "80:80"
+    depends_on:
+      - flask
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge

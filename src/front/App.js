@@ -129,7 +129,7 @@ const App = () => {
     console.log("Attempting to get AI move");
     console.log("Current board state:", board);
     try {
-      const response = await fetch("https://chessroyale-b12838540456.herokuapp.com/get_move", {
+      const response = await fetch("/api/get_move", {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
